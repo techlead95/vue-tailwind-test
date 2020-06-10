@@ -17,10 +17,10 @@
               />
             </div>
             <div class="hidden sm:-my-px sm:ml-6 sm:flex">
-              <nav-item active>Dashboard</nav-item>
-              <nav-item>Team</nav-item>
-              <nav-item>Projects</nav-item>
-              <nav-item>Calendar</nav-item>
+              <nav-link to="/blogs" :active="currentPath == '/blogs'">Dashboard</nav-link>
+              <nav-link to="/courses" :active="currentPath == '/courses'" class="ml-8">Team</nav-link>
+              <nav-link class="ml-8">Projects</nav-link>
+              <nav-link class="ml-8">Calendar</nav-link>
             </div>
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:items-center">
@@ -47,29 +47,30 @@
       </div>
     </nav>
 
-    <div class="py-10">
-      <main>
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <slot></slot>
-        </div>
-      </main>
-    </div>
+    <main>
+      <slot></slot>
+    </main>
   </div>
 </template>
 
 <script>
 import Dropdown from "./Dropdown";
-import NavItem from "./NavItem";
-import BurgerMenuIcon from './BurgerMenuIcon';
-import NotificationIcon from './NotificationIcon';
+import NavLink from "./NavLink";
+import BurgerMenuIcon from "./BurgerMenuIcon";
+import NotificationIcon from "./NotificationIcon";
 
 export default {
   name: "Layout",
   components: {
     Dropdown,
-    NavItem,
+    NavLink,
     BurgerMenuIcon,
     NotificationIcon
+  },
+  computed: {
+    currentPath() {
+      return this.$route.path;
+    }
   }
 };
 </script>

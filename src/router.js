@@ -9,7 +9,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Blog',
+      redirect: '/blogs'
+    },
+    {
+      path: '/blogs',
+      name: 'BlogPage',
       component: BlogPage
     },
     {
